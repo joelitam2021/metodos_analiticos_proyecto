@@ -1,1 +1,4 @@
 .ipynb_checkpoints
+datos/*
+.DS_Store
+apoyo/*
