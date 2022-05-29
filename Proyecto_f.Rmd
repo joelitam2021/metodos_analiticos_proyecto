@@ -1,6 +1,9 @@
 ---
 title: "Proyecto_MA"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -37,6 +40,23 @@ Los datos propocionados por la compañía son:
 **Concluir que hay ciertos tipos de productos que no se van a tomar en cuenta porque en relidad la variedad de los mismos es poca**
 **Generar data set aptos para el modelo**
 
+#### Arctículos más vendidos
+![](./img/top10conteo.png)
+
+#### Arctículos por mayor monto vendido
+![](./img/top10monto.png)
+
+#### Arctículos por mayor monto promedio vendido
+![](./img/top10promedio.png)
+
+#### Arctículos más vendidos de manera semanal
+![](./img/dateconteo.png)
+
+#### Arctículos por mayor monto vendido de manera semanal
+![](./img/datemonto.png)
+
+#### Arctículos por mayor monto promedio vendido de manera semanal
+![](./img/datemontopromedio.png)
 
 ### Definición conceptual de retroalimentación implicita
 
