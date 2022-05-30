@@ -7,11 +7,9 @@ author:
 - Jesús Enrique Miranda (202634)
 date: "30/05/2022"
 output:
-  html_document:
-    df_print: paged
   pdf_document:
     extra_dependencies: flafter
-header-includes: \renewcommand{\figurename}{Figura}
+ header-includes: \renewcommand{\figurename}{Figura}
 ---
 
 <!-- #output: -->
