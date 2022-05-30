@@ -37,7 +37,7 @@ H&M Group ha decidido lanzar una competencia para desarrollar recomendaciones de
 Un sistema de recomendación también mejora la experiencia del cliente, pues es mejor que naveguen en la red viendo productos por gusto y no porque se vean obligados a hacerlo porque no encuentran lo que quieren comprar.
 
 
-### Análisis exploario de datos (EDA)
+### Análisis exploratorio de datos (EDA)
 
 #### Descriptivos de los dataset:
 Los datos proporcionados por la compañía son:
