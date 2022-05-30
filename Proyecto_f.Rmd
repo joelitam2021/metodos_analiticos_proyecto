@@ -114,6 +114,16 @@ Los primeros productos de la tabla de arriba naturalemnte son los que concentran
 knitr::include_graphics("./img/datemontopromedio.png")
 ```
 
+#### Data set para entrenamiento del modelo
+**Esquema**
+- Columnas:
+  - customer_id: Id del cliente que viene desde el data set de transacciones
+  - article_id: Id del articulo que viene desde el data set de artículos
+  - purchase_count: Número de compras hechas por cada cliente
+  - client_id: Id creado en la transformación del dataset para simplificar el mismo
+- Filas: 27,306,439
+- Tamaño: 297.6 MB
+
 
 
 ### Definición conceptual de retroalimentación implicita
