@@ -8,8 +8,9 @@ author:
 date: "30/05/2022"
 output:
   pdf_document:
-    extra_dependencies: flafter
- header-includes: \renewcommand{\figurename}{Figura}
+    extra_dependencies: ["flafter"]
+ header-includes:
+   - \renewcommand{\figurename}{Figura}
 ---
 
 <!-- #output: -->
