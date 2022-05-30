@@ -9,8 +9,8 @@ date: "30/05/2022"
 output:
   pdf_document:
     extra_dependencies: ["flafter"]
- header-includes:
-   - \renewcommand{\figurename}{Figura}
+header-includes:
+  - \renewcommand{\figurename}{Figura}
 ---
 
 <!-- #output: -->
@@ -71,7 +71,7 @@ Los datos proporcionados por la compañía son:
 Se observa que la mayoría de los clientes tienen edades entre 20 y 30. Sin embargo, también los hay de alrededor de 50 años.
 
 
-```{r, out.width="0.5\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Distribución de clientes por edad"),  echo=FALSE}
+```{r, out.width="0.55\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Distribución de clientes por edad"),  echo=FALSE}
 knitr::include_graphics("./img/histedad.png")
 ```
 
@@ -285,35 +285,37 @@ En la tabla 5 se observan los parámetros definidos para cada modelo por tipo de
 - als_accesories
 - als_glb
 
-Dentro de pyspark se ha desarrollado un método para generar recomendaciones de productos basada en la proyección de los factores latentes que se han obtenido para cada modelo. El orden en que se muestran los ratings proyectados es de forma descendente. Si bien, no es posible mostrar en detalle
+Dentro de pyspark se ha desarrollado un método para generar recomendaciones de productos basada en la proyección de los factores latentes que se han obtenido para cada modelo. El orden en que se muestran los ratings proyectados es de forma descendente.
 
 **Imagen comparativo compro vs recomendacion para todos los modelos**
+
 A continuación se muestran algunas recomendaciones que realiza el sistema basado en compras realizadas anteriormente por el cliente:
 
 - **Modelo para zapatos**
 
 <center>
-![](./img/zapatos.png){width=50%} 
+![](./img/zapatos.png){width=40%} 
 </center>
 
+\newpage
 - **Modelo para ropa interior (underwear)**
 
 <center>
-![](./img/under.png){width=50%}
+![](./img/under.png){width=40%}
 
 </center>
 
 - **Modelo para accesorios**
 
 <center>
-![](./img/accesorios.png){width=50%}
+![](./img/accesorios.png){width=40%}
 
 </center>
 
 - **Modelo para GLB**
 
 <center>
-![](./img/glb.png){width=50%}
+![](./img/glb.png){width=40%}
 
 </center>
 
