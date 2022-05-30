@@ -6,11 +6,12 @@ author:
 - Joel Jaramillo (30615)
 - Jesús Enrique Miranda (202634)
 date: "30/05/2022"
-output: 
+output:
+  html_document:
+    df_print: paged
   pdf_document:
-    extra_dependencies: ["flafter"]
-header-includes:
-  - \renewcommand{\figurename}{Figura}
+    extra_dependencies: flafter
+header-includes: \renewcommand{\figurename}{Figura}
 ---
 
 <!-- #output: -->
@@ -115,7 +116,6 @@ knitr::include_graphics("./img/datemontopromedio.png")
 ```
 
 #### Data set para entrenamiento del modelo
-**Esquema**
 - Columnas:
   - customer_id: Id del cliente que viene desde el data set de transacciones
   - article_id: Id del articulo que viene desde el data set de artículos
