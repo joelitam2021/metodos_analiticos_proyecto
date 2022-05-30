@@ -4,3 +4,6 @@ datos/*
 apoyo/*
 *.parquet
 *.log
+*.tex
+*.RData
+*.Rhistory
