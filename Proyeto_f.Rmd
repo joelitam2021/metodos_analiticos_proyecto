@@ -1,14 +1,15 @@
 ---
 title: "Recomendaciones personalizadas de moda"
 author:
-- "Mónica García (203145)"
-- "Jorge García (202945)"
-- "Joel Jaramillo (30615)"
-- "Jesús Enrique Miranda (202634)"
+- Mónica García (203145)
+- Jorge García (202945)
+- Joel Jaramillo (30615)
+- Jesús Enrique Miranda (202634)
 date: "30/05/2022"
-output: pdf_document
-header-includes:
-  - \renewcommand{\and}{\\}
+output:
+  html_document:
+    df_print: paged
+header-includes: \renewcommand{\and}{\\}
 ---
 
 <!-- #output: -->
@@ -38,34 +39,61 @@ Un sistema de recomendación también mejora la experiencia del cliente, pues es
 
 ### Análisis exploario de datos (EDA)
 
-Los datos propocionados por la compañía son:
+#### Descriptivos de los dataset:
+Los datos proporcionados por la compañía son:
 
-- Imagenes de los productos
-- Data set de clientes
-- Data set de transacciones 
+- Imágenes de los productos: Folder de imágenes que corresponde a todos los article_id
+- Data set de clientes: Meta data de cada customer_id en el data set
+  - Tamaño: 207.14 MB
+  - Columnas: 7
+  - Filas: 1,371,980
+- Data set de transacciones: Data set que consiste en todas las compras hecha por cada customer_id
+  - Tamaño: 3.49 GB
+  - Columnas: 5
+  - Filas: 31,788,324
+- Data set de artículos: Meta data detallada para cada article_id disponible para compra
+  - Tamaño: 36.13 MB
+  - Columnas: 25
+  - Filas: 105,542
 
-**Describir las características de los datos**
-**Describir cataracterísticas del data set de transacciones**
-**Concluir que hay ciertos tipos de productos que no se van a tomar en cuenta porque en relidad la variedad de los mismos es poca**
-**Generar data set aptos para el modelo**
 
-#### Arctículos más vendidos
-<!-- ![](./img/top10conteo.png) -->
+#### Descriptivos:
+- Número de clientes:  1,371,980
+- Número de transacciones:  1,371,980
+- Número de clientes que hicieron al menos una transacción:  1,362,281
+- % de clientes que han hecho al menos una transacción:  99.29
+- Número de clientes que no han hecho ninguna compra:  9,699
+- % de clientes que no han hecho ninguna compra:  0.70
 
-<!-- #### Arctículos por mayor monto vendido -->
-<!-- ![](./img/top10monto.png) -->
+<center>
+**Distribución de la edad de los clientes**
+Se observa que la mayoría de los clientes tienen edades entre 20 y 30. Sin embargo, también los hay de alrededor de 50 años.
+![](./img/histedad.png)
 
-<!-- #### Arctículos por mayor monto promedio vendido -->
-<!-- ![](./img/top10promedio.png) -->
+<center>
+**Número de productos por categoria**
+Se observa que hay categorías con poco número de productos. Por lo que habrían categorías que no se considerarían para el modelo debido a que se harán a nivel categoría. Por ejemplo, Fun, Bags, etc.
+![](./img/prodbygroup.png)
 
-<!-- #### Arctículos más vendidos de manera semanal -->
-<!-- ![](./img/dateconteo.png) -->
+<center>
+**Arctículos por mayor monto vendido**
+![](./img/top10monto.png)
 
-<!-- #### Arctículos por mayor monto vendido de manera semanal -->
-<!-- ![](./img/datemonto.png) -->
+<center>
+**Arctículos por mayor monto promedio vendido**
+![](./img/top10promedio.png)
 
-<!-- #### Arctículos por mayor monto promedio vendido de manera semanal -->
-<!-- ![](./img/datemontopromedio.png) -->
+<center>
+**Arctículos más vendidos de manera semanal**
+![](./img/dateconteo.png)
+
+<center>
+**Arctículos por mayor monto vendido de manera semanal**
+![](./img/datemonto.png)
+
+<center>
+**Arctículos por mayor monto promedio vendido de manera semanal**
+![](./img/datemontopromedio.png)
 
 ### Definición conceptual de retroalimentación implicita
 
@@ -286,4 +314,8 @@ Finalmente, si duda generar el modelo es muy importante, pero considerar la form
 
 ### Apendice
 
-Agregar el código utilizado (opcional)
+#### Código
+
+ [1] Notebook de transformación y exploración de datos <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/EDA.ipynb>
+
+ [2] Notebook de modelado <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/Filtrado_colaborativo.ipynb>
