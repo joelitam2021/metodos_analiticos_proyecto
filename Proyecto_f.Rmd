@@ -1,10 +1,22 @@
 ---
-title: "Proyecto_MA"
-output:
-  html_document:
-    df_print: paged
-  pdf_document: default
+title: "Recomendaciones personalizadas de moda"
+author:
+- Mónica García (203145)
+- Jorge García (202945)
+- Joel Jaramillo (30615)
+- Jesús Enrique Miranda (202634)
+date: "30/05/2022"
+output: 
+  pdf_document:
+    extra_dependencies: ["flafter"]
+header-includes:
+  - \renewcommand{\figurename}{Figura}
 ---
+
+<!-- #output: -->
+<!-- #  html_document: -->
+<!-- #    df_print: paged -->
+<!-- #  pdf_document: default -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -14,7 +26,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r, echo=FALSE, include=FALSE}
 library(tidyverse)
 library(data.table)
-
 ```
 ## Sistema de recomendación de moda. H & M
 
@@ -27,36 +38,83 @@ H&M Group ha decidido lanzar una competencia para desarrollar recomendaciones de
 Un sistema de recomendación también mejora la experiencia del cliente, pues es mejor que naveguen en la red viendo productos por gusto y no porque se vean obligados a hacerlo porque no encuentran lo que quieren comprar.
 
 
-### Análisis exploario de datos (EDA)
+### Análisis exploratorio de datos (EDA)
 
-Los datos propocionados por la compañía son:
+Los datos proporcionados por la compañía son:
 
-- Imagenes de los productos
-- Data set de clientes
-- Data set de transacciones 
+- Imágenes de los productos: Folder de imágenes que corresponde a todos los article_id
+- Data set de clientes: Meta data de cada customer_id en el data set
+  - Tamaño: 207.14 MB
+  - Columnas: 7
+  - Filas: 1,371,980
+- Data set de transacciones: Data set que consiste en todas las compras hecha por cada customer_id
+  - Tamaño: 3.49 GB
+  - Columnas: 5
+  - Filas: 31,788,324
+- Data set de artículos: Meta data detallada para cada article_id disponible para compra
+  - Tamaño: 36.13 MB
+  - Columnas: 25
+  - Filas: 105,542
 
-**Describir las características de los datos**
-**Describir cataracterísticas del data set de transacciones**
-**Concluir que hay ciertos tipos de productos que no se van a tomar en cuenta porque en relidad la variedad de los mismos es poca**
-**Generar data set aptos para el modelo**
 
-#### Arctículos más vendidos
-![](./img/top10conteo.png)
+**Descriptivos:**
 
-#### Arctículos por mayor monto vendido
-![](./img/top10monto.png)
+- Número de clientes:  1,371,980
+- Número de transacciones:  31,788,324
+- Número de clientes que hicieron al menos una transacción:  1,362,281
+- % de clientes que han hecho al menos una transacción:  99.29%
+- Número de clientes que no han hecho ninguna compra:  9,699
+- % de clientes que no han hecho ninguna compra:  0.71%
+- Nùmero de productos: 105,542 
 
-#### Arctículos por mayor monto promedio vendido
-![](./img/top10promedio.png)
+**Distribución de la edad de los clientes:**
+Se observa que la mayoría de los clientes tienen edades entre 20 y 30. Sin embargo, también los hay de alrededor de 50 años.
 
-#### Arctículos más vendidos de manera semanal
-![](./img/dateconteo.png)
 
-#### Arctículos por mayor monto vendido de manera semanal
-![](./img/datemonto.png)
+```{r, out.width="0.5\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Distribución de clientes por edad"),  echo=FALSE}
+knitr::include_graphics("./img/histedad.png")
+```
 
-#### Arctículos por mayor monto promedio vendido de manera semanal
-![](./img/datemontopromedio.png)
+
+
+
+**Número de productos por categoria:**
+
+La siguiente tabla muestra un resumen de los distintos tipos de producto y el número de items por cada uno de ellos:
+
+| Categoria    | No. Items |
+|--------------|-----------|
+| Germent upper body         | 42741        |
+| Germent lower body      | 19812         |
+| Germent full body    | 13292     |
+| Accessories       | 11158         |
+| Underwear       | 5490         |
+| Shoes       | 5283         |
+| Swimwear       | 3127         |
+| Socks & Tights       | 2442         |
+| Nightwear       | 1899         |
+| Cosmetic       | 49         |
+| Bags       | 25         |
+| Items       | 17         |
+| Furniture       | 13         |
+| Germent and shoe care       | 9         |
+| Stationery       | 5         |
+| Interior textile       | 3         |
+| Fun       | 2         |
+| Unknown       | 175         |
+
+
+
+
+Los primeros productos de la tabla de arriba naturalemnte son los que concentran mayor ínidce de ventas prmedio semanales, tal y como lo muestra la figura 2. Lo anterior sugiere concentrarnos en un modelo para las categorías con mayor número de items, debido a la dinámica semanal que presentan y a partir de los cuales se puede logar el objetivo de la compañía de mejorar el número de ventas. 
+
+
+
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Ventas promedio semanales"), echo=FALSE}
+knitr::include_graphics("./img/datemontopromedio.png")
+```
+
+
 
 ### Definición conceptual de retroalimentación implicita
 
@@ -221,7 +279,34 @@ En la tabla 5 se observan los parámetros definidos para cada modelo por tipo de
 Dentro de pyspark se ha desarrollado un método para generar recomendaciones de productos basada en la proyección de los factores latentes que se han obtenido para cada modelo. El orden en que se muestran los ratings proyectados es de forma descendente. Si bien, no es posible mostrar en detalle
 
 **Imagen comparativo compro vs recomendacion para todos los modelos**
+A continuación se muestran algunas recomendaciones que realiza el sistema basado en compras realizadas anteriormente por el cliente:
 
+- **Modelo para zapatos**
+
+<center>
+![](./img/zapatos.png){width=50%} 
+</center>
+
+- **Modelo para ropa interior (underwear)**
+
+<center>
+![](./img/under.png){width=50%}
+
+</center>
+
+- **Modelo para accesorios**
+
+<center>
+![](./img/accesorios.png){width=50%}
+
+</center>
+
+- **Modelo para GLB**
+
+<center>
+![](./img/glb.png){width=50%}
+
+</center>
 
 
 ### Conclusiones
@@ -233,7 +318,7 @@ Por otro lado, con una mejora en los recursos computacionales si duda este model
 Finalmente, si duda generar el modelo es muy importante, pero considerar la forma en como se resuelve el problema desde el punto de vista del código utilizado también lo es, esto porque spark procesa muy bien ciertas tareas pero existen otros métodos en los que se debe pensar muy bien la forma de implementarlos debido a que pueden tomar mucho tiempo, es decir se debe tratar de optimizar de alguna manera las operaciones que se realizan. Considerando poner el sistema en producción esta última parte sin duda es muy importante a tomar en cuenta.
 
 
- 
+\newpage
 ### Referencias
 
 [1] Hu, Y., Y. Koren, and C. Volinsky. 2008. “Collaborative Filtering for Implicit Feedback Datasets.” In 2008 Eighth IEEE International Conference on Data Mining, 263–72.
@@ -251,8 +336,8 @@ Finalmente, si duda generar el modelo es muy importante, pero considerar la form
 
 ### Apendice
 
-#### Código
+**Código**
 
-[1] Notebook de transformación y exploración de datos <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/EDA.ipynb>
+ [1] Notebook de transformación y exploración de datos <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/EDA.ipynb>
 
-[2] Notebook de modelado <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/Filtrado_colaborativo.ipynb>
+ [2] Notebook de modelado <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/Filtrado_colaborativo.ipynb>
