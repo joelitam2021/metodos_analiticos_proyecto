@@ -251,4 +251,8 @@ Finalmente, si duda generar el modelo es muy importante, pero considerar la form
 
 ### Apendice
 
-Agregar el código utilizado (opcional)
+#### Código
+
+[1] Notebook de transformación y exploración de datos <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/EDA.ipynb>
+
+[2] Notebook de modelado <https://github.com/joelitam2021/metodos_analiticos_proyecto/blob/main/notebooks/Filtrado_colaborativo.ipynb>
